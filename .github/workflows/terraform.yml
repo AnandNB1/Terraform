@@ -8,11 +8,11 @@ on:
     #   - closed
 
 jobs:
-  # terraform:
+  terraform:
   # name: 'Terraform'
   # Look for pull request merge event 
-  if_merged:
-    if: github.event.pull_request.merged == true
+  # if_merged:
+  #   if: github.event.pull_request.merged == true
     runs-on: Ubuntu-latest
     environment: Dev
 
