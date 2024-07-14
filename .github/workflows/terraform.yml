@@ -1,0 +1,45 @@
+name: 'Terraform-Dev'
+
+on:
+  pull_request:
+    branches:
+      - Dev
+    types:
+      - closed
+
+jobs:
+  # terraform:
+  # name: 'Terraform'
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: Ubuntu-latest
+
+    steps:
+        - name: checkout
+          uses: actions/checkout@v2
+
+        - name: Set up terraform
+          uses: hashicorp/setup-terraform@v1
+
+        - name: Terraform initialize
+          env:
+            AWS_ACCESS_KEY_ID = ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY = ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          run: terraform init
+
+        - name: Terraform validate
+          run: terraform validate
+
+        - name: Terraform Plan
+          env:
+            AWS_ACCESS_KEY_ID = ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY = ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          run: terraform plan
+
+        - name: Terraform Apply
+          env:
+            AWS_ACCESS_KEY_ID = ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY = ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          run: terraform apply
+
+
