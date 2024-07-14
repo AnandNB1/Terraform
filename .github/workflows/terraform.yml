@@ -1,11 +1,11 @@
 name: 'Terraform-Dev'
 
 on:
-  pull_request:
+  push:
     branches:
       - Dev
-    types:
-      - closed
+    # types:
+    #   - closed
 
 jobs:
   # terraform:
