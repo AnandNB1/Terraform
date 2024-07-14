@@ -1,4 +1,4 @@
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "cicd_terraform_git_dev"
+  bucket = "cicd-terraform-git-dev"
   acl  = "private"
 }
