@@ -14,7 +14,7 @@ jobs:
   # if_merged:
   #   if: github.event.pull_request.merged == true
     runs-on: Ubuntu-latest
-    # environment: Dev
+    environment: Dev
 
     steps:
         - name: checkout
