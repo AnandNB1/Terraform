@@ -19,6 +19,8 @@ jobs:
     steps:
         - name: checkout
           uses: actions/checkout@v2
+
+        - run: echo "$environment"
           
         - name: Set up terraform
           uses: hashicorp/setup-terraform@v1
