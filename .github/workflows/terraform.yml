@@ -14,13 +14,13 @@ jobs:
   # if_merged:
   #   if: github.event.pull_request.merged == true
     runs-on: Ubuntu-latest
-    environment: vars.ENVIRONMENT
+    environment: ${{vars.ENVIRONMENT}}
     
     steps:
         - name: checkout
           uses: actions/checkout@v2
 
-        - run: echo ${{vars.ENVIRONMENT}}
+        - run: ${{vars.ENVIRONMENT}}
           
         - name: Set up terraform
           uses: hashicorp/setup-terraform@v1
