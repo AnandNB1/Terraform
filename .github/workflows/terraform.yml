@@ -14,7 +14,7 @@ jobs:
   # if_merged:
   #   if: github.event.pull_request.merged == true
     runs-on: Ubuntu-latest
-    # environment: ${{secrets.ENVIRONMENT}}
+    environment: Dev
     
     steps:
         - name: checkout
@@ -29,7 +29,6 @@ jobs:
           env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-            environment: ${{secrets.ENVIRONMENT}}
           run: terraform init
 
         - name: Terraform validate
@@ -39,14 +38,12 @@ jobs:
           env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-            environment: ${{secrets.ENVIRONMENT}}
           run: terraform plan
 
         - name: Terraform Apply
           env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-            environment: ${{secrets.ENVIRONMENT}}
           run: terraform apply -auto-approve
 
 
