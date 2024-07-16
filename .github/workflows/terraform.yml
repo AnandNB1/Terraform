@@ -19,10 +19,7 @@ jobs:
     steps:
         - name: checkout
           uses: actions/checkout@v2
-          # Pass environment variable to Terraform
-        - run: echo "::set-output name=TF_ENV::$ENVIRONMENT"
-
-
+          
         - name: Set up terraform
           uses: hashicorp/setup-terraform@v1
 
